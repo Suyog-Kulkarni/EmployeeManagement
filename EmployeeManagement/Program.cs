@@ -3,57 +3,48 @@ using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.DataProtection;
+using System.Diagnostics.CodeAnalysis;
+using EmployeeManagement.Models;
 
 public class Program
 {
-    private readonly IConfiguration? _config; // Iconfiguration is used to access the configuration files like appsetting, launchsetting, appsetting.development.json etc
+    /*private readonly IConfiguration? _config; // Iconfiguration is used to access the configuration files like appsetting, launchsetting, appsetting.development.json etc
    
     private readonly IWebHostEnvironment? _hostingEnvironment;
-    private readonly IServiceCollection _services1;
-
-
-    
-    public Program(IConfiguration config, IWebHostEnvironment hosting, IServiceCollection services)
+    public Program(IConfiguration config, IWebHostEnvironment hosting)
     {
         _config = config;
         _hostingEnvironment = hosting;
-        _services1 = services;
-
-    }
+    }*/
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddMvc();
+        builder.Services.AddSingleton<IEmployeeRepository,MockEmployeeRepository>();
         builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
 
         var app = builder.Build();
+        
 
-        //app.MapGet("/", () => _config["Key"]);
+        //app.MapGet("/", () => _config["Key"]
 
         /*FileServerOptions fileServerOptions = new();
         fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
         fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
         app.UseFileServer(fileServerOptions);*/// to use non default files
-        // usefileserver combines the functionality od=f usestaticfiles, usedefaultfiles and usedirectorybrowser middelware
+        // usefileserver combines the functionality of usestaticfiles, usedefaultfiles and usedirectorybrowser middelware
 
-        app.UseDefaultFiles();
-        /*DeveloperExceptionPageOptions developerExceptionPageOptions = new();
-        {
-            SourceCodeLineCount = 10;
-        }*/
-        // use to show the number of lines above and below the error line
-
-        /*ServiceCollection services = new();*/
-
-        /*IServiceCollection? services = default;
-        services.AddMvc();*/
-        
+       // app.UseDefaultFiles();
 
         app.UseStaticFiles();
         app.UseMvcWithDefaultRoute();
         app.Run() ;
     }
+   /* what is routing
+        The ASP.NET Routing module is responsible 
+        for mapping incoming browser requests to particular MVC controller actions.
+*/
 
 
     /*Configuration sources in asp.net core

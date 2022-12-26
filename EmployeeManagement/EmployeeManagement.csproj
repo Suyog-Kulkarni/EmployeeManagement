@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="NewFolder\Home\**" />
-    <Content Remove="NewFolder\Home\**" />
-    <EmbeddedResource Remove="NewFolder\Home\**" />
-    <None Remove="NewFolder\Home\**" />
+    <Compile Remove="Controller\Home\**" />
+    <Content Remove="Controller\Home\**" />
+    <EmbeddedResource Remove="Controller\Home\**" />
+    <None Remove="Controller\Home\**" />
   </ItemGroup>
 
   <ItemGroup>
