@@ -6,16 +6,21 @@ namespace EmployeeManagement.NewFolder
   
     public class HomeController : Controller
     {
-        private IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
         // constructor injection
         public HomeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
-        public string Index()
+        public string? Index()
         {
-           
-            return _employeeRepository.GetEmployee(1).Name;
+            return "suuuiiii";
+        }
+        public IActionResult Details()
+        {
+            Employee model = _employeeRepository.GetEmployee(1);
+            return View(model);// have four overloaded versions
         }
     }
+
 }
