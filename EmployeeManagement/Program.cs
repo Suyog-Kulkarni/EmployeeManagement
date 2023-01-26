@@ -21,8 +21,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddMvc();
-        NewMethod(builder);
-        builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
+        builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+       builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
 
         var app = builder.Build();
 
@@ -34,10 +34,7 @@ public class Program
         app.UseMvcWithDefaultRoute();
         app.Run();
 
-        static void NewMethod(WebApplicationBuilder builder)
-        {
-            builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
-        }
+      
     }
     /* what is routing
          The ASP.NET Routing module is responsible 
