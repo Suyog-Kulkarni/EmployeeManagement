@@ -1,4 +1,5 @@
-﻿<html>
+﻿@model EmployeeManagement.ViewModel.HomeDetailsViewModel
+<html xmlns ="http://www.w3.org/1999/xhtml">
     <head>
         <title>
 
@@ -6,7 +7,16 @@
 
     </head>
     <body>
-        <h1>details from cshtml</h1>
+        <h3>details from cshtml</h3>
+        <div>
+            Name : @Model.Employee.Name
+        </div>
+        <div>
+            Email : @Model.Employee.Email
+        </div>
+        <div>
+            Department : @Model.Employee.Department
+        </div>
     </body>
 
 </html>

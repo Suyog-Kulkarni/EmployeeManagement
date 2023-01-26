@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\default.html" />
+    <Content Remove="wwwroot\foo.html" />
     <Content Remove="wwwroot\MLModel.mbconfig" />
   </ItemGroup>
 

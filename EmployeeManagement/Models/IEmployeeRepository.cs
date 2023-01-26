@@ -3,5 +3,7 @@
  {
     Employee GetEmployee(int Id);
 
+    IEnumerable<Employee> GetAllEmployee();
+
  }
 

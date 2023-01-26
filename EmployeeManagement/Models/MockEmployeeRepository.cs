@@ -7,11 +7,20 @@ public class MockEmployeeRepository : IEmployeeRepository
     {
         _employeeList= new List<Employee>();// initial cap. can be declared
         {
-            new Employee() { Id = 1, Name = "Suyog", Department = "HR", Email = "a@gmail.com" };
-            new Employee() { Id = 2, Name = "suy", Department="IT", Email = "b@gamil.com" };
-            new Employee() { Id = 3, Name = "su", Department = "IT", Email = "c@gmail.com" };
-        };
+            _ = new Employee() { Id = 1, Name = "Suyog", Email = "a@gmail.com", Department = "IT" };
+
+            _ = new Employee() { Id = 2, Name = "Suyo", Email = "b@gmail.com", Department = "IT" };
+
+            _ = new Employee() { Id = 3, Name = "Suy", Email = "c@gmail.com", Department = "IT" };
+
+            _  =  new Employee() { Id = 4, Name = "Suy", Email = "d@gmail.com", Department = "IT" };
+        }
     }
-    public Employee GetEmployee(int Id) =>  _employeeList.FirstOrDefault(e => e.Id == Id);
+    public Employee GetEmployee(int Id)
+    {
+        return _employeeList.SingleOrDefault(e => e.Id == Id);
+
+    }
+    public IEnumerable<Employee> GetAllEmployee() => _employeeList;
 }
 

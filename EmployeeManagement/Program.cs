@@ -21,30 +21,28 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddMvc();
-        builder.Services.AddSingleton<IEmployeeRepository,MockEmployeeRepository>();
+        NewMethod(builder);
         builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
 
         var app = builder.Build();
-        
 
-        //app.MapGet("/", () => _config["Key"]
-
-        /*FileServerOptions fileServerOptions = new();
-        fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-        fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
-        app.UseFileServer(fileServerOptions);*/// to use non default files
         // usefileserver combines the functionality of usestaticfiles, usedefaultfiles and usedirectorybrowser middelware
 
-       // app.UseDefaultFiles();
 
         app.UseStaticFiles();
+        // app.UseDefaultFiles();
         app.UseMvcWithDefaultRoute();
-        app.Run() ;
+        app.Run();
+
+        static void NewMethod(WebApplicationBuilder builder)
+        {
+            builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+        }
     }
-   /* what is routing
-        The ASP.NET Routing module is responsible 
-        for mapping incoming browser requests to particular MVC controller actions.
-*/
+    /* what is routing
+         The ASP.NET Routing module is responsible 
+         for mapping incoming browser requests to particular MVC controller actions.
+ */
 
 
     /*Configuration sources in asp.net core

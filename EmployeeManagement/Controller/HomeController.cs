@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Models;
+using EmployeeManagement.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.NewFolder
@@ -12,14 +13,19 @@ namespace EmployeeManagement.NewFolder
         {
             _employeeRepository = employeeRepository;
         }
-        public string? Index()
+        public ViewResult Index()
         {
-            return "suuuiiii";
+            return View(_employeeRepository.GetAllEmployee());
         }
-        public IActionResult Details()
+        public ViewResult Details()
         {
-            Employee model = _employeeRepository.GetEmployee(1);
-            return View(model);// have four overloaded versions
+            HomeDetailsViewModel viewModel = new() // we cretae a "View Model" when model object does not contain all the data a view needs
+            {
+                Employee = _employeeRepository.GetEmployee(1),
+                PageTitle = "Employee Details"
+            };
+            
+            return View(viewModel);// have four overloaded versions
         }
     }
 
