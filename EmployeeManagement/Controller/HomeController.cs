@@ -8,8 +8,7 @@ namespace EmployeeManagement.NewFolder
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
-
-         /*MockEmployeeRepository _employeeRepositoryMock = new();*/
+     
         // constructor injection
         public HomeController(IEmployeeRepository employeeRepository)
         {
@@ -17,7 +16,8 @@ namespace EmployeeManagement.NewFolder
         }
         public ViewResult Index()
         {
-            return View(_employeeRepository.GetAllEmployee());
+            IEnumerable<Employee> employees = _employeeRepository.GetAllEmployee();
+           return  View(employees);
         }
         public ViewResult Details(int id)
         {
